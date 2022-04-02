@@ -1,3 +1,4 @@
 build/
 touch.pro.autosave
 touch.qmlproject
+.qmake.stash
