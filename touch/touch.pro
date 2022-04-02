@@ -3,7 +3,9 @@ TARGET = touch
 !no_desktop: QT += widgets
 
 include(src/src.pri)
-include(../shared/shared.pri)
+include(include/shared.pri)
+
+INCLUDEPATH += include
 
 OTHER_FILES += \
     main.qml \

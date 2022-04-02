@@ -52,7 +52,7 @@ import QtQuick 2.2
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Layouts 1.3
-import "content"
+//import "content"
 
 ApplicationWindow {
     visible: true
@@ -79,7 +79,7 @@ ApplicationWindow {
             	   from: 0
             	   to: 1
             	   duration: 3000
-        	    }
+        	}
         	NumberAnimation {
             	   from: 1
             	   to: 0
@@ -89,116 +89,72 @@ ApplicationWindow {
 
     	Column {
         	spacing: 20
-        	//anchors.centerIn: parent
-	
-	
-/*		Slider{
-	//		anchors.margin:20
-                	value:0
-                	style:touchStyle_Slider
-		}
- */     
+     
       		GridLayout{
-		 id:gridLayout
-		 rows:5
-		 flow: GridLayout.TopToBottom
-			//anchors.fill:parent
+ 		    id:gridLayout
+		    rows:5
+		    flow: GridLayout.TopToBottom
 
-			Label {text:"ADDRESS"
+	            Label {
+			    text:"ADDRESS"
 		 	    color: "#FFF"
- 			}
-			Label { text:"RED"
+		    }
+			
+		    Label { 
+		    	    text:"RED"
 			    color: "#F00"
-			}
+		    }
 
-			Label { text:"BLUE"
-		 	   color: "#00F"
-			}
-			Label { text:"GREEN"
-		 	   color: "#0F0"
-			}	
-
-			Label { text:"INTENSITY"
-		 	   color: "#0FF"
-			}
-
-			TextField {
-            		anchors.margins: 20
-            		text: "Address"
-           	 	style: touchStyle_Text
-           		width: parent.width/2 - 2
-            		height: 20
-                        validator: IntValidator {bottom: 1; top: 255}
-        		}
+		    Label { 
+		    	    text:"BLUE"
+		 	    color: "#00F"
+		    }
 		
-			Slider {
-	//		anchors.margin:20
-			value:0
-			style:touchStyle_Slider
-			}
+		    Label { 
+		    	    text:"GREEN"
+		 	    color: "#0F0"
+		    }	
 
-			Slider {
-//              	anchors.margin:20
-                	value:0
-              		style:touchStyle_Slider
-        		}
+		    Label { 
+		    	    text:"INTENSITY"
+		 	    color: "#0FF"
+		    }
 
-			Slider {
-//              	anchors.margin:20
-                	value:0
-                	style:touchStyle_Slider
-        		}
+		    TextField {
+			    anchors.margins: 20
+	    		    text: "Address"
+	   	 	    style: touchStyle_Text
+	   		    width: parent.width/2 - 2
+	    		    height: 20
+		            validator: IntValidator {bottom: 1; top: 255}
+		    }
+		
+		    Slider {
+		   	    value:0
+			    style:touchStyle_Slider
+		    }
 
+		    Slider {
+			    value:0
+	      		    style:touchStyle_Slider
+		    }
 
-/*	TextField {
-            anchors.margins: 20
-            text: "RED"
-            style: touchStyle_Text
-	    width: parent.width/2
+		    Slider {
+			    value:0
+			    style:touchStyle_Slider
+		    }
 
-        }
-
-
-        TextField {
-            anchors.margins: 20
-            text: "GREEN"
-            style: touchStyle_Text
-        	}
-*/	 
-       			 Slider {
-  //              anchors.margin:20
-                	value:0
-               		 style:touchStyle_Slider
-        		}
-	
-/*	TextField {
-            	anchors.margins: 20
-            	text: "BLUE"
-            	style: touchStyle_Text
-        	}
-
-   	     TextField {
-        	anchors.margins: 20
-            	text: "INTENSITY"
-            	style: touchStyle_Text
-            	readOnly: true
-        	}
- */	
-	
-
-		}   	
-
-
+		    Slider {
+			    value:0
+	       		    style:touchStyle_Slider
+		    }
+	    	}   	
     	}
-  
-  
-}
+    }
  
-
 
     Component {
         id: touchStyle_Text
-
         TextFieldStyle {
             textColor: "white"
             font.pixelSize: 28
