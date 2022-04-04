@@ -49,10 +49,10 @@
 ****************************************************************************/
 
 import QtQuick 2.2
-import QtQuick.Controls 1.2
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Layouts 1.3
-//import "content"
+import MyExample.Module 1.0
 
 ApplicationWindow {
     visible: true
@@ -64,94 +64,92 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-
     Item {
-    	width: parent.width
-    	height: parent.height
+        width: parent.width
+        height: parent.height
 
-    	property real progress: 0
+        property real progress: 0
 
-    	SequentialAnimation on progress {
-        	loops: Animation.Infinite
-        	running: true
+        SequentialAnimation on progress {
+            loops: Animation.Infinite
+            running: true
        
-	 	NumberAnimation {
-            	   from: 0
-            	   to: 1
-            	   duration: 3000
-        	}
-        	NumberAnimation {
-            	   from: 1
-            	   to: 0
-            	   duration: 3000
-        	}	
-   	 }		
+            NumberAnimation {
+                from: 0
+                to: 1
+                duration: 3000
+            }
+            NumberAnimation {
+                from: 1
+                to: 0
+                duration: 3000
+            }    
+        }        
 
-    	Column {
-        	spacing: 20
-     
-      		GridLayout{
- 		    id:gridLayout
-		    rows:5
-		    flow: GridLayout.TopToBottom
+        Column {
+            spacing: 20
+            GridLayout{
+                id:gridLayout
+                rows:5
+                flow: GridLayout.TopToBottom
+                Label {
+                    text:"ADDRESS"
+                    color: "#FFF"
+                }
+                Label { 
+                    text:"RED"
+                    color: "#F00"
+                }
+                Label { 
+                    text:"BLUE"
+                    color: "#00F"
+                }
+                Label { 
+                    text:"GREEN"
+                    color: "#0F0"
+                }    
+                Label { 
+                    text:"INTENSITY"
+                    color: "#0FF"
+                }
+                TextField {
+                    anchors.margins: 20
+                    text: "Address"
+                //    style: touchStyle_Text
+                    width: parent.width/2 - 2
+                    height: 20
+                    validator: IntValidator {bottom: 1; top: 255}
+                }
+        
+                Slider { 
+                    from: 0
+                    to: 127
+                    value:0
+                    id: slider1
+                //    style:touchStyle_Slider
+                    MyPrint {
+                        id: myprint2
+                    }
+                    onMoved : myprint2.print(value)
+                }
 
-	            Label {
-			    text:"ADDRESS"
-		 	    color: "#FFF"
-		    }
-			
-		    Label { 
-		    	    text:"RED"
-			    color: "#F00"
-		    }
+                Slider {               
+                    value:0
+                //    style:touchStyle_Slider
+                }
 
-		    Label { 
-		    	    text:"BLUE"
-		 	    color: "#00F"
-		    }
-		
-		    Label { 
-		    	    text:"GREEN"
-		 	    color: "#0F0"
-		    }	
-
-		    Label { 
-		    	    text:"INTENSITY"
-		 	    color: "#0FF"
-		    }
-
-		    TextField {
-			    anchors.margins: 20
-	    		    text: "Address"
-	   	 	    style: touchStyle_Text
-	   		    width: parent.width/2 - 2
-	    		    height: 20
-		            validator: IntValidator {bottom: 1; top: 255}
-		    }
-		
-		    Slider {
-		   	    value:0
-			    style:touchStyle_Slider
-		    }
-
-		    Slider {
-			    value:0
-	      		    style:touchStyle_Slider
-		    }
-
-		    Slider {
-			    value:0
-			    style:touchStyle_Slider
-		    }
-
-		    Slider {
-			    value:0
-	       		    style:touchStyle_Slider
-		    }
-	    	}   	
-    	}
+                Slider {
+                    value:0
+                //    style:touchStyle_Slider
+                }
+           
+                Slider {
+                    value:0
+                //    style:touchStyle_Slider
+                }
+            }       
+        }
     }
- 
 
     Component {
         id: touchStyle_Text
@@ -162,7 +160,6 @@ ApplicationWindow {
                 implicitHeight: 50
                 implicitWidth: 320
                 BorderImage {
-                    source: "../images/textinput.png"
                     border.left: 8
                     border.right: 8
                     anchors.bottom: parent.bottom
@@ -173,7 +170,7 @@ ApplicationWindow {
         }
     }
 
-   Component {
+    Component {
         id: touchStyle_Slider
         SliderStyle {
             handle: Rectangle {
@@ -183,7 +180,6 @@ ApplicationWindow {
                 antialiasing: true
                 color: Qt.lighter("#468bb7", 1.2)
             }
-
             groove: Item {
                 implicitHeight: 50
                 implicitWidth: 400
@@ -204,5 +200,4 @@ ApplicationWindow {
             }
         }
     }
-
 }

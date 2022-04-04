@@ -1,24 +1,19 @@
-QT += qml quick
+QT += qml quick quickcontrols2
 TARGET = touch
 !no_desktop: QT += widgets
 
-include(src/src.pri)
-include(include/shared.pri)
+SOURCES += \
+    src/main.cpp
+
+SOURCES += \
+    include/qtquickcontrolsapplication.h
+
+HEADERS = include/myprint.h
 
 INCLUDEPATH += include
 
 OTHER_FILES += \
-    main.qml \
-    content/AndroidDelegate.qml \
-    content/ButtonPage.qml \
-    content/ListPage.qml \
-    content/ProgressBarPage.qml \
-    content/SliderPage.qml \
-    content/TabBarPage.qml \
-    content/TextInputPage.qml
+    main.qml 
 
 RESOURCES += \
     resources.qrc
-
-target.path = $$[QT_INSTALL_EXAMPLES]/quickcontrols/controls/touch
-INSTALLS += target

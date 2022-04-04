@@ -50,10 +50,12 @@
 
 #include "qtquickcontrolsapplication.h"
 #include <QtQml/QQmlApplicationEngine>
+#include "myprint.h"
 
 int main(int argc, char *argv[])
 {
     QtQuickControlsApplication app(argc, argv);
+    qmlRegisterType<MyPrint>("MyExample.Module", 1, 0, "MyPrint");
     QQmlApplicationEngine engine(QUrl("qrc:/main.qml"));
     if (engine.rootObjects().isEmpty())
         return -1;
